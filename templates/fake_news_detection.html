@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+    <title>Fake News Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css')}}">
+    </head>
+    
+    <body>
+        <div class="header">
+            <h2>Fake News Detection</h2>
+        </div>
+        {% with messages= get_flashed_messages() %}  <!-- get all flashed messages -->
+            {% for msg in messages %}
+                <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                {{msg}}
+                </div>
+            {% endfor %}    
+        {% endwith %}
+        <br />
+        <p>This site hosts a deployment of a natural language processing (NLP) model for detection of fake news.</br>The model was trained on a dataset obtained from <a style="color:white;" href="https://www.kaggle.com/c/fake-news/data">kaggle </a>
+        
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <form action="#" method="POST">
+            <label>Enter title of news:</label><br />
+            <textarea name="title" row="3" cols="70"></textarea>
+            </br>
+            <input name="pred" type="submit" value="Predict">
+        </form>
+        </br>
+        {% if prediction == 0 %}
+        <h6>Message: {{message}}</h6>
+        <h6>Verdict:<span style="color:red;"> Fake</span></h6>
+        
+        {% elif prediction == 1 %}
+        <h6>Message: {{message}}</h6>
+        <h6>Verdict:<span style="color:yellow;"> Not fake</span></h6>
+        {% endif %}
+        
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <footer class="bg-light text-center text-lg-start">
+          <!-- Copyright -->
+              <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+           Paul Ntim Yeboah © 2022:
+            <a class="text-dark" href="https://github.com/paul12345-cyber">View Code on Github</a>
+              </div>
+  <!-- Copyright -->
+</footer>
+        
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </body>
+</html>
+
